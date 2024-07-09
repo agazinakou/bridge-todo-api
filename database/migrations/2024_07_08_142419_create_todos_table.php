@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('author_id')->on('users');
             $table->string('title');
             $table->string('description');
             $table->timestamps();

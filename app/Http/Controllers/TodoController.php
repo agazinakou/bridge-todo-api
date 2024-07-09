@@ -10,6 +10,9 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
+        foreach ($todos as $key => $todo) {
+            $todo->author();
+        }
         return response()->json([
             'status' => 'success',
             'todos' => $todos,
@@ -24,6 +27,7 @@ class TodoController extends Controller
         ]);
 
         $todo = Todo::create([
+            'author_id' => auth()->user()->id,
             'title' => $request->title,
             'description' => $request->description,
         ]);
