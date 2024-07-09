@@ -58,7 +58,7 @@ class TodoController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $todo = Todo::find($id);
+        $todo = Todo::where('id', $id)->first();
         $todo->title = $request->title;
         $todo->description = $request->description;
         $todo->save();
