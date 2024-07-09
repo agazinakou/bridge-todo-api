@@ -11,7 +11,7 @@ class TodoController extends Controller
     {
         $todos = Todo::all();
         foreach ($todos as $key => $todo) {
-            $todos[$key]->author();
+            $todos->author();
         }
         return response()->json([
             'status' => 'success',
