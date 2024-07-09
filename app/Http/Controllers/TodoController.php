@@ -59,8 +59,8 @@ class TodoController extends Controller
         ]);
 
         $todo = Todo::where('id', $id)->first();
-        $todo->title = $request->title;
-        $todo->description = $request->description;
+        $todo->title = $request->get('title');
+        $todo->description = $request->get('description');
         $todo->save();
 
         return response()->json([
