@@ -22,6 +22,5 @@ Route::middleware('api')->group(function () {
             Route::put('todo/{id}', 'update');
             Route::delete('todo/{id}', 'destroy');
         });
-
     });
 });
