@@ -42,6 +42,8 @@ class TodoController extends Controller
     public function show($id)
     {
         $todo = Todo::find($id);
+        $todo->author;
+
         return response()->json([
             'status' => 'success',
             'todo' => $todo,
