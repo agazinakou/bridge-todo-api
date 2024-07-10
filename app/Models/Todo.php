@@ -14,7 +14,8 @@ class Todo extends Model
     protected $fillable = [
         'author_id',
         'title',
-        'description'
+        'description',
+        'done'
     ];
 
     public function author(): BelongsTo {

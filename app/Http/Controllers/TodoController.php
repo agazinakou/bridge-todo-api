@@ -61,6 +61,7 @@ class TodoController extends Controller
         $todo = Todo::where('id', $id)->first();
         $todo->title = $request->get('title');
         $todo->description = $request->get('description');
+        $todo->done = $request->get('done');
         $todo->save();
 
         return response()->json([

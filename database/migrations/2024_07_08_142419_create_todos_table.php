@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignUuid('author_id')->on('users');
             $table->string('title');
             $table->string('description');
+            $table->boolean('done')->default(false);
             $table->timestamps();
         });
     }
