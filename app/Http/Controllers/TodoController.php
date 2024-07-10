@@ -9,7 +9,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::orderBy('done', 'DESC')->orderBy('created_by', 'DESC')->get();
         foreach ($todos as $key => $todo) {
             $todos[$key]->author = $todo->author;
         }
