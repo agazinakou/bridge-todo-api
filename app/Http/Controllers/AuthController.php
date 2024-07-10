@@ -72,6 +72,22 @@ class AuthController extends Controller
         ]);
     }
 
+    public function me()
+    {
+        return response()->json([
+            'status' => 'success',
+            'user' => Auth::user()
+        ]);
+    }
+
+    public function users()
+    {
+        return response()->json([
+            'status' => 'success',
+            'user' => User::all()
+        ]);
+    }
+
     public function refresh()
     {
         return response()->json([

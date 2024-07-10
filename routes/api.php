@@ -19,6 +19,9 @@ Route::middleware('api')->group(function () {
         Route::middleware([JwtMiddleware::class])->group(function () {
             Route::get('resume', [ResumeController::class, 'resume']);
 
+            Route::get('users', [AuthController::class, 'users']);
+            Route::get('me', [AuthController::class, 'me']);
+
             Route::controller(TodoController::class)->group(function () {
                 Route::get('todos', 'index');
                 Route::post('todo', 'store');
