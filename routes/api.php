@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TodoController;
 use App\Http\Middleware\JwtMiddleware;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ Route::middleware('api')->group(function () {
             Route::post('refresh', 'refresh');
         });
         Route::middleware([JwtMiddleware::class])->group(function () {
+            Route::get('resume', [ResumeController::class, 'resume']);
+
             Route::controller(TodoController::class)->group(function () {
                 Route::get('todos', 'index');
                 Route::post('todo', 'store');
