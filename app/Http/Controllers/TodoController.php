@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::orderBy('done', 'DESC')->orderBy('created_at', 'DESC')->get();
+        $todos = Todo::where('author_id', Auth::user()->id)->orderBy('done', 'DESC')->orderBy('created_at', 'DESC')->get();
         foreach ($todos as $key => $todo) {
             $todos[$key]->author = $todo->author;
         }
@@ -58,7 +59,7 @@ class TodoController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $todo = Todo::where('id', $id)->first();
+        $todo = Todo::where('id', $id)->where('author_id', Auth::user()->id)->first();
         $todo->title = $request->get('title');
         $todo->description = $request->get('description');
         $todo->done = $request->get('done');
@@ -77,7 +78,7 @@ class TodoController extends Controller
             'done' => 'required',
         ]);
 
-        $todo = Todo::where('id', $id)->first();
+        $todo = Todo::where('id', $id)->where('author_id', Auth::user()->id)->first();
         $todo->done = $request->get('done');
         $todo->save();
 
