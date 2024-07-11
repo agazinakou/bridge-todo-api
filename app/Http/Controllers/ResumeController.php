@@ -13,8 +13,8 @@ class ResumeController extends Controller
         $resume = [
             'all' => Todo::count(),
             'me' => Todo::where('author_id', Auth::user()->id)->count(),
-            'todo' => Todo::where('done', false)->count(),
-            'done' => Todo::where('done', true)->count()
+            'todo' => Todo::where('done', false)->where('author_id', Auth::user()->id)->count(),
+            'done' => Todo::where('done', true)->where('author_id', Auth::user()->id)->count()
         ];
 
         return response()->json([

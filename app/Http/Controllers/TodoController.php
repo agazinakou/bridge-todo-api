@@ -10,7 +10,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::where('author_id', Auth::user()->id)->orderBy('done', 'DESC')->orderBy('created_at', 'DESC')->get();
+        $todos = Todo::where('author_id', Auth::user()->id)->orderBy('done', 'ASC')->orderBy('created_at', 'DESC')->get();
         foreach ($todos as $key => $todo) {
             $todos[$key]->author = $todo->author;
         }
