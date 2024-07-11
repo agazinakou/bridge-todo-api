@@ -71,6 +71,23 @@ class TodoController extends Controller
         ]);
     }
 
+    public function mark(Request $request, $id)
+    {
+        $request->validate([
+            'done' => 'required',
+        ]);
+
+        $todo = Todo::where('id', $id)->first();
+        $todo->done = $request->get('done');
+        $todo->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Todo updated successfully',
+            'todo' => $todo,
+        ]);
+    }
+
     public function destroy($id)
     {
         $todo = Todo::find($id);

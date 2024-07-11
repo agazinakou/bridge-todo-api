@@ -27,6 +27,7 @@ Route::middleware('api')->group(function () {
                 Route::post('todo', 'store');
                 Route::get('todo/{id}', 'show');
                 Route::put('todo/{id}', 'update');
+                Route::put('todo/{id}/mark', 'mark');
                 Route::delete('todo/{id}', 'destroy');
             });
         });
