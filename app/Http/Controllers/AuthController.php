@@ -84,7 +84,7 @@ class AuthController extends Controller
     {
         return response()->json([
             'status' => 'success',
-            'user' => User::all()
+            'users' => User::all()
         ]);
     }
 
